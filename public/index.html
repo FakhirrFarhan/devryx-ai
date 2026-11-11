@@ -9,9 +9,9 @@
 <meta name="theme-color" content="#0a0a0b">
 
 <!-- Primary SEO -->
-<title>Devryx AI — Free AI Chat Assistant with Image Generation</title>
-<meta name="description" content="Devryx AI is a free AI chat assistant with vision, voice, image generation, and text-to-speech. Chat, create, and get answers instantly — no login walls, no limits.">
-<meta name="keywords" content="Devryx, Devryx AI, DevryxAI, AI chat assistant, free AI chatbot, AI image generator">
+<title>Devryx AI — Free AI Chat, Image & Video Generator (No Sign-Up)</title>
+<meta name="description" content="Devryx AI is a free AI assistant: chat with AI, generate images and videos, talk with voice, use vision, maps and weather. No sign-up, no login wall — just open and create.">
+<meta name="keywords" content="Devryx, Devryx AI, DevryxAI, free AI, AI chat, free AI chatbot, AI assistant, AI image generator, free AI video generator, AI video maker, text to video AI, AI chat assistant, free AI tools, talk to AI, AI voice chat">
 <meta name="author" content="Devryx">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://devryxai.netlify.app/">
@@ -25,14 +25,14 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://devryxai.netlify.app/">
 <meta property="og:site_name" content="Devryx AI">
-<meta property="og:title" content="Devryx AI — Free AI Chat Assistant with Image Generation">
-<meta property="og:description" content="Chat with Devryx AI for free — vision, voice input, image generation, text-to-speech, and conversation history built in.">
+<meta property="og:title" content="Devryx AI — Free AI Chat, Image & Video Generator (No Sign-Up)">
+<meta property="og:description" content="Chat with Devryx AI for free — generate images and videos, talk with voice, use vision, maps and weather. No sign-up, no login wall.">
 <meta property="og:image" content="https://devryxai.netlify.app/ai-logo.png">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Devryx AI — Free AI Chat Assistant with Image Generation">
-<meta name="twitter:description" content="Chat with Devryx AI for free — vision, voice input, image generation, text-to-speech, and conversation history built in.">
+<meta name="twitter:title" content="Devryx AI — Free AI Chat, Image & Video Generator (No Sign-Up)">
+<meta name="twitter:description" content="Chat with Devryx AI for free — generate images and videos, talk with voice, use vision, maps and weather. No sign-up, no login wall.">
 <meta name="twitter:image" content="https://devryxai.netlify.app/ai-logo.png">
 
 <meta name="google-site-verification" content="LlcLAmilyacOx2k_FMaVTvqS1iaJ0GQVKfckREWNJ8E" />
@@ -48,9 +48,19 @@
   "name": "Devryx AI",
   "alternateName": "DevryxAI",
   "url": "https://devryxai.netlify.app/",
-  "description": "Devryx AI is a free AI chat assistant with vision, voice, image generation, and text-to-speech.",
+  "description": "Devryx AI is a free AI assistant for chat, image generation, video generation, voice conversation, vision, maps and weather. No sign-up required.",
   "applicationCategory": "Chatbot / AI Assistant",
   "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript and a modern web browser",
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "featureList": "AI chat, AI image generation, AI video generation, voice chat, speech to text, text to speech, image understanding (vision), live maps and weather, conversation history, themes",
+  "author": {
+    "@type": "Organization",
+    "name": "Devryx Labs",
+    "url": "https://devryxai.netlify.app/about.html",
+    "logo": "https://devryxai.netlify.app/ai-logo.png"
+  },
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -431,6 +441,15 @@ body{display:flex}
 #sendbtn:active{transform:scale(.92)}
 #sendbtn:disabled{background:var(--s3);box-shadow:none;cursor:not-allowed;transform:none}
 #sendbtn svg{width:15px;height:15px}
+#stopbtn{
+  width:36px;height:36px;border-radius:9px;margin-left:6px;
+  background:var(--s3);border:1px solid var(--red);
+  cursor:pointer;display:none;align-items:center;justify-content:center;
+  transition:opacity .15s,transform .1s;
+}
+#stopbtn:hover{opacity:.85}
+#stopbtn:active{transform:scale(.92)}
+#stopbtn svg{width:13px;height:13px}
 #hint{font-size:11px;color:var(--text3);text-align:center;margin-top:9px}
 #hint span{color:var(--text3)}
 
@@ -794,6 +813,13 @@ video.gen-vid{width:100%;max-width:430px;border-radius:12px;display:block;backgr
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
+<noscript>
+  <div style="max-width:640px;margin:40px auto;padding:0 20px;font-family:system-ui,sans-serif;line-height:1.6">
+    <h1>Devryx AI — Free AI Chat, Image & Video Generator</h1>
+    <p>Devryx AI is a free AI assistant that runs in your browser. Chat with AI, generate images and videos, talk with voice, ask about photos, and explore maps with live weather. No sign-up and no login wall.</p>
+    <p>Enable JavaScript to use the app, or read more: <a href="/about.html">About Devryx AI</a> · <a href="/contact.html">Contact</a> · <a href="/privacy-policy.html">Privacy Policy</a> · <a href="/terms.html">Terms of Service</a></p>
+  </div>
+</noscript>
 <div id="shell">
 
   <!-- SIDEBAR -->
@@ -900,7 +926,7 @@ video.gen-vid{width:100%;max-width:430px;border-radius:12px;display:block;backgr
     <div style="position:relative;flex:1;overflow:hidden;display:flex;flex-direction:column">
       <div id="msgs">
         <div id="welcome">
-          <div class="wlogo"><img src="ai-logo.png" alt="logo"></div>
+          <div class="wlogo"><img src="ai-logo.png" alt="Devryx logo"></div>
           <h1>Let's figure this out.</h1>
           <p>Ask me anything — coding, writing, math, analysis, creative work, image understanding, file generation, maps &amp; weather, short videos, or just thinking through a problem together, in any language.</p>
           <div class="chips">
@@ -957,6 +983,9 @@ video.gen-vid{width:100%;max-width:430px;border-radius:12px;display:block;backgr
             <button id="sendbtn" onclick="send()" aria-label="Send">
               <svg viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
+            <button id="stopbtn" onclick="stopGeneration()" title="Stop generating" aria-label="Stop generating">
+              <svg viewBox="0 0 24 24" fill="var(--red)"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+            </button>
           </div>
         </div>
         <div id="hint">Enter to send &nbsp;·&nbsp; Shift+Enter for new line</div>
@@ -995,6 +1024,8 @@ let currentSessionId = null;
 let autoSpeak = false;
 let recognition = null;
 let listening = false;
+let lastRecogError = '';
+let voiceErrorLatch = false;
 let imageMode = false;
 let pendingAttachment = null; // { dataUrl, name }
 
@@ -1276,8 +1307,26 @@ function speakText(btn, text){
   const u = new SpeechSynthesisUtterance(plain);
   currentUtterance = u;
   if(btn){ btn.classList.add('speaking'); btn.innerHTML = STOP_SVG; btn.dataset.wasSpeaking='1'; }
-  u.onend = ()=>{ if(btn){ btn.classList.remove('speaking'); btn.innerHTML = SPEAK_SVG; btn.dataset.wasSpeaking='0'; } };
-  speechSynthesis.speak(u);
+  const clearBtn = ()=>{ if(btn){ btn.classList.remove('speaking'); btn.innerHTML = SPEAK_SVG; btn.dataset.wasSpeaking='0'; } };
+  u.onend = clearBtn;
+  u.onerror = (e)=>{
+    clearBtn();
+    // Browsers without a speech engine fail instantly and silently; say so.
+    if(btn && hintEl && e && (e.error === 'synthesis-failed' || e.error === 'not-allowed' || e.error === 'language-unavailable')){
+      hintEl.innerHTML = 'Read aloud is not available in this browser.';
+    }
+  };
+  const doSpeak = ()=>{ try{ speechSynthesis.resume(); }catch(e){} speechSynthesis.speak(u); };
+  // Chrome loads voices asynchronously; speaking before any voice exists
+  // can silently produce nothing, so wait briefly for the voices list.
+  if(speechSynthesis.getVoices && speechSynthesis.getVoices().length === 0 && 'onvoiceschanged' in speechSynthesis){
+    let kicked = false;
+    const kick = ()=>{ if(kicked) return; kicked = true; doSpeak(); };
+    speechSynthesis.onvoiceschanged = kick;
+    setTimeout(kick, 350);
+  } else {
+    doSpeak();
+  }
 }
 function toggleAutoSpeak(){
   autoSpeak = !autoSpeak;
@@ -1304,8 +1353,36 @@ function setupRecognition(){
       setTimeout(()=>{ if(voiceChat && inputEl.value.trim()) send(); }, 350);
     }
   };
-  r.onend = ()=>{ listening=false; micBtn.classList.remove('on'); inputWrap.classList.remove('listening'); };
-  r.onerror = ()=>{ listening=false; micBtn.classList.remove('on'); inputWrap.classList.remove('listening'); };
+  r.onstart = ()=>{
+    if(voiceChat && hintEl) hintEl.innerHTML = 'Listening\u2026 speak now, I\u2019ll reply out loud';
+  };
+  r.onerror = (e)=>{
+    listening=false; micBtn.classList.remove('on'); inputWrap.classList.remove('listening');
+    lastRecogError = (e && e.error) || '';
+    if(voiceChat && hintEl){
+      if(lastRecogError==='not-allowed' || lastRecogError==='service-not-allowed'){
+        hintEl.innerHTML = 'Microphone is blocked \u2014 allow mic access for this site in your browser settings, then tap Voice chat again.';
+        voiceChat = false; voiceChatBtn.classList.remove('on');
+        autoSpeak = false; voiceBtn.classList.remove('active');
+        voiceErrorLatch = true;
+      } else if(lastRecogError==='audio-capture'){
+        hintEl.innerHTML = 'No microphone was found on this device, so voice chat cannot listen right now.';
+        voiceChat = false; voiceChatBtn.classList.remove('on');
+        voiceErrorLatch = true;
+      } else if(lastRecogError==='no-speech'){
+        hintEl.innerHTML = 'I did not hear anything \u2014 still listening\u2026';
+      } else if(lastRecogError && lastRecogError!=='aborted'){
+        hintEl.innerHTML = 'Voice input hit a problem (' + lastRecogError + ') \u2014 tap the mic to try again.';
+      }
+    }
+  };
+  r.onend = ()=>{
+    listening=false; micBtn.classList.remove('on'); inputWrap.classList.remove('listening');
+    if(voiceChat && !sendBtn.disabled && !speechSynthesis.speaking && !inputEl.value.trim() && (lastRecogError==='' || lastRecogError==='no-speech')){
+      lastRecogError = '';
+      setTimeout(()=>{ if(voiceChat) startVoiceListen(); }, 600);
+    }
+  };
   return r;
 }
 function toggleMic(){
@@ -1419,6 +1496,21 @@ function addMsg(role, content, isErr=false, imageDataUrl=null, userImageUrl=null
   return wrap;
 }
 
+/* Stop-generation support: one AbortController per in-flight request, plus
+   a hook that cancels the in-flight image load wait. The Stop button is
+   visible exactly while the typing indicator is (same busy window). */
+let genController = null;
+let genStopped = false;
+let imgAbortHook = null;
+function showStopBtn(show){
+  const sb = document.getElementById('stopbtn');
+  if(sb) sb.style.display = show ? 'inline-flex' : 'none';
+}
+function stopGeneration(){
+  genStopped = true;
+  if(genController){ try{ genController.abort(); }catch(e){} }
+  if(imgAbortHook){ const h = imgAbortHook; imgAbortHook = null; try{ h(); }catch(e){} }
+}
 function showTyping(){
   removeWelcome();
   const el = document.createElement('div');
@@ -1427,10 +1519,12 @@ function showTyping(){
   el.innerHTML = `<div class="av ai-av">${AI_SVG}</div><div class="typing-bub"><span></span><span></span><span></span></div>`;
   msgsEl.appendChild(el);
   scrollToBottom();
+  showStopBtn(true);
 }
 function hideTyping(){
   const el = document.getElementById('typing');
   if(el) el.remove();
+  showStopBtn(false);
 }
 
 function friendlyError(raw, isImageReq){
@@ -1668,9 +1762,18 @@ function addFollowupChips(aiWrap, follows){
 let voiceChat = false;
 const voiceChatBtn = document.getElementById('voicechatbtn');
 function toggleVoiceChat(){
+  // After a mic error the mode already switched itself off and the hint is
+  // showing the problem; the next tap just acknowledges and clears it
+  // instead of instantly retrying the failing microphone.
+  if(!voiceChat && voiceErrorLatch){
+    voiceErrorLatch = false;
+    hintEl.innerHTML = 'Enter to send &nbsp;·&nbsp; Shift+Enter for new line';
+    return;
+  }
   voiceChat = !voiceChat;
   voiceChatBtn.classList.toggle('on', voiceChat);
   if(voiceChat){
+    voiceErrorLatch = false;
     if(!('speechSynthesis' in window) || !(window.SpeechRecognition || window.webkitSpeechRecognition)){
       alert('Voice chat needs speech recognition + speech synthesis (Chrome or Edge).');
       voiceChat = false; voiceChatBtn.classList.remove('on'); return;
@@ -1706,9 +1809,17 @@ function speakReplyAloud(text, onDone){
   speechSynthesis.cancel();
   const plain = String(text||'').replace(/```[\s\S]*?```/g,' code block ').replace(/[#*`>_-]/g,'').slice(0, 600);
   const u = new SpeechSynthesisUtterance(plain);
-  u.onend = ()=>{ if(onDone) onDone(); };
-  u.onerror = ()=>{ if(onDone) onDone(); };
-  speechSynthesis.speak(u);
+  let keepAlive = null;
+  const finish = ()=>{ if(keepAlive){ clearInterval(keepAlive); keepAlive = null; } if(onDone) onDone(); };
+  u.onend = finish;
+  u.onerror = finish;
+  // Chrome drops speak() calls issued in the same tick as cancel(), and
+  // long utterances stall without periodic resume() nudges — handle both.
+  setTimeout(()=>{
+    try{ speechSynthesis.resume(); }catch(e){}
+    speechSynthesis.speak(u);
+    keepAlive = setInterval(()=>{ try{ if(speechSynthesis.speaking && !speechSynthesis.paused) { speechSynthesis.pause(); speechSynthesis.resume(); } }catch(e){} }, 8000);
+  }, 80);
 }
 function voiceChatResumeListen(){
   if(!voiceChat) return;
@@ -1720,11 +1831,25 @@ function voiceChatResumeListen(){
 const VIDEO_NEGATIVE_PROMPT = 'worst quality, inconsistent motion, blurry, jittery, distorted';
 const VIDEO_PROVIDERS = [
   {
+    // Premium quality first: LTX-2 (Flow-class model) on a ZeroGPU Space.
+    // Jobs must be started through our /video broker function, which adds
+    // the site's HF token server-side (the daily free ZeroGPU quota is
+    // attributed to that account). If the quota is used up, the stream
+    // errors and the chain falls through to the fast engine below.
+    name: 'LTX-2',
+    broker: true,
+    base: 'https://alexnasa-ltx-2-turbo.hf.space',
+    endpoint: 'generate_video',
+    timeoutMs: 8*60*1000
+  },
+  {
+    // 10-second clips with fast settings: 704x384, distilled CFG 1.0 and
+    // the multi-scale texture pass OFF (it roughly doubled render time).
     name: 'LTX',
     base: 'https://lightricks-ltx-video-distilled.hf.space',
     endpoint: 'text_to_video',
     timeoutMs: 8*60*1000,
-    buildPayload: (prompt)=>({data:[prompt, VIDEO_NEGATIVE_PROMPT, null, null, 512, 704, 'text-to-video', 5, 9, 42, true, 3.0, true]})
+    buildPayload: (prompt)=>({data:[prompt, VIDEO_NEGATIVE_PROMPT, null, null, 384, 704, 'text-to-video', 10, 9, 42, true, 1.0, false]})
   },
   {
     name: 'Wan 2.1',
@@ -1975,18 +2100,28 @@ async function genSingleClip(prompt, setStatus, ctrl){
   let lastErr = null;
   for(let pi=0; pi<VIDEO_PROVIDERS.length; pi++){
     const prov = VIDEO_PROVIDERS[pi];
-    const attempts = pi===0 ? 3 : 2;
+    const attempts = prov.broker ? 1 : (pi===1 ? 3 : 2);
     for(let attempt=1; attempt<=attempts; attempt++){
       try{
-        if(pi>0 && attempt===1) setStatus('Primary engine is down — switching to backup video engine...');
+        if(pi>0 && attempt===1) setStatus('Switching to the next video engine...');
         else if(attempt>1) setStatus('Retrying '+prov.name+'... (attempt '+attempt+' of '+attempts+')');
         else setStatus('Contacting '+prov.name+' video engine...');
-        const r = await fetch(`${prov.base}/gradio_api/call/${prov.endpoint}`, {
-          method:'POST', headers:{'Content-Type':'application/json'},
-          body: JSON.stringify(prov.buildPayload(prompt))
-        });
-        const j = await r.json().catch(()=>({}));
-        if(!j || !j.event_id) throw new Error(prov.name+' is busy right now.');
+        let j;
+        if(prov.broker){
+          const r = await fetch('/.netlify/functions/video', {
+            method:'POST', headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({prompt})
+          });
+          j = await r.json().catch(()=>({}));
+          if(!j || !j.event_id) throw new Error((j && j.error) || (prov.name+' is busy right now.'));
+        } else {
+          const r = await fetch(`${prov.base}/gradio_api/call/${prov.endpoint}`, {
+            method:'POST', headers:{'Content-Type':'application/json'},
+            body: JSON.stringify(prov.buildPayload(prompt))
+          });
+          j = await r.json().catch(()=>({}));
+          if(!j || !j.event_id) throw new Error(prov.name+' is busy right now.');
+        }
         return await streamVideoEvents(prov, j.event_id, setStatus, ctrl);
       }catch(err){
         if(ctrl.cancelled || /cancelled/i.test(err && err.message || '')) throw err;
@@ -2091,6 +2226,8 @@ async function send(){
   inputEl.style.height = 'auto';
   charCount.textContent = '';
   sendBtn.disabled = true;
+  genStopped = false;
+  genController = new AbortController();
   clearAttachment();
 
   if(attachment){
@@ -2106,7 +2243,8 @@ async function send(){
       const res = await fetch('/.netlify/functions/chat',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({messages:history, memory:userMemory})
+        body:JSON.stringify({messages:history, memory:userMemory}),
+        signal: genController ? genController.signal : undefined
       });
       const data = await res.json();
       hideTyping();
@@ -2126,8 +2264,13 @@ async function send(){
       }
     } catch(err){
       hideTyping();
-      addMsg('ai', `Connection error: ${err.message}`, true);
-      persistCurrent();
+      if(genStopped || (err && err.name === 'AbortError')){
+        addMsg('ai', 'Stopped. Ask me anything else when you are ready.');
+        persistCurrent();
+      } else {
+        addMsg('ai', `Connection error: ${err.message}`, true);
+        persistCurrent();
+      }
     }
     sendBtn.disabled = false;
     inputEl.focus();
@@ -2160,20 +2303,23 @@ async function send(){
         const seed = Math.floor(Math.random()*1000000000);
         const purl = 'https://image.pollinations.ai/prompt/' +
           encodeURIComponent(text) +
-          '?model=flux&width=1024&height=1024&seed=' + seed;
+          '?model=flux&width=1024&height=1024&seed=' + seed + '&nologo=true';
         await new Promise((resolve, reject)=>{
           const img = new Image();
-          const to = setTimeout(()=>reject(new Error('timeout')), 120000);
-          img.onload = ()=>{ clearTimeout(to); resolve(); };
-          img.onerror = ()=>{ clearTimeout(to); reject(new Error('load failed')); };
+          const to = setTimeout(()=>{ imgAbortHook = null; reject(new Error('timeout')); }, 120000);
+          imgAbortHook = ()=>{ clearTimeout(to); try{ img.src = ''; }catch(e){} reject(new Error('stopped')); };
+          img.onload = ()=>{ clearTimeout(to); imgAbortHook = null; resolve(); };
+          img.onerror = ()=>{ clearTimeout(to); imgAbortHook = null; reject(new Error('load failed')); };
           img.src = purl;
         });
         imgUrl = purl;
       }catch(pollErr){
+        if(genStopped) throw pollErr;
         const res = await fetch('/.netlify/functions/image',{
           method:'POST',
           headers:{'Content-Type':'application/json'},
-          body:JSON.stringify({prompt:text})
+          body:JSON.stringify({prompt:text}),
+          signal: genController ? genController.signal : undefined
         });
         const data = await res.json();
         if(data.error) throw new Error(data.error);
@@ -2185,7 +2331,11 @@ async function send(){
       persistCurrent();
     } catch(err){
       hideTyping();
-      addMsg('ai', friendlyError('Image generation failed, please try again in a moment.', true), true);
+      if(genStopped || (err && err.message === 'stopped')){
+        addMsg('ai', 'Image generation stopped.');
+      } else {
+        addMsg('ai', friendlyError('Image generation failed, please try again in a moment.', true), true);
+      }
       history.pop(); // image-generation requests aren't real conversation turns
     }
     sendBtn.disabled = false;
@@ -2198,7 +2348,8 @@ async function send(){
     const res = await fetch('/.netlify/functions/chat',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({messages:history, memory:userMemory})
+      body:JSON.stringify({messages:history, memory:userMemory}),
+      signal: genController ? genController.signal : undefined
     });
     const data = await res.json();
     hideTyping();
@@ -2218,8 +2369,13 @@ async function send(){
     }
   } catch(err){
     hideTyping();
-    addMsg('ai', `Connection error: ${err.message}`, true);
-    persistCurrent();
+    if(genStopped || (err && err.name === 'AbortError')){
+      addMsg('ai', 'Stopped. Ask me anything else when you are ready.');
+      persistCurrent();
+    } else {
+      addMsg('ai', `Connection error: ${err.message}`, true);
+      persistCurrent();
+    }
   }
   sendBtn.disabled = false;
   inputEl.focus();
@@ -2233,7 +2389,7 @@ function newChat(){
   const w = document.createElement('div');
   w.id = 'welcome';
   w.innerHTML = `
-    <div class="wlogo"><img src="ai-logo.png" alt="logo"></div>
+    <div class="wlogo"><img src="ai-logo.png" alt="Devryx logo"></div>
     <h1>${userMemory.name ? `Hey ${esc(userMemory.name)} — let's figure this out.` : "Let's figure this out."}</h1>
     <p>Ask me anything — coding, writing, math, analysis, creative work, maps &amp; weather, or just thinking through a problem together.</p>
     <div class="chips">

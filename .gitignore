@@ -1,0 +1,5 @@
+*.apk
+.env
+.env.*
+.netlify/
+__pycache__/

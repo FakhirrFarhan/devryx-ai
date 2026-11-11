@@ -67,6 +67,8 @@ async function weather(lat, lon) {
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST")
     return json(405, { error: "Method Not Allowed" });
+  if (event.body && event.body.length > 20000)
+    return json(200, { error: "Request too large." });
   let body;
   try {
     body = JSON.parse(event.body || "{}");
@@ -78,11 +80,24 @@ exports.handler = async (event) => {
       if (!body.query) return json(200, { error: "Missing query." });
       return json(200, await geocode(String(body.query).slice(0, 200)));
     }
-    if (body.action === "reverse") {
-      return json(200, await reverse(parseFloat(body.lat), parseFloat(body.lon)));
-    }
-    if (body.action === "weather") {
-      return json(200, await weather(parseFloat(body.lat), parseFloat(body.lon)));
+    if (body.action === "reverse" || body.action === "weather") {
+      // Validate coordinates strictly: they are interpolated into upstream
+      // URLs, so anything non-numeric or out of range is rejected here
+      // instead of reaching the URL builder.
+      const lat = Number(body.lat);
+      const lon = Number(body.lon);
+      if (
+        !Number.isFinite(lat) ||
+        !Number.isFinite(lon) ||
+        lat < -90 ||
+        lat > 90 ||
+        lon < -180 ||
+        lon > 180
+      )
+        return json(200, { error: "Invalid coordinates." });
+      if (body.action === "reverse")
+        return json(200, await reverse(lat, lon));
+      return json(200, await weather(lat, lon));
     }
     return json(200, { error: "Unknown action." });
   } catch (e) {

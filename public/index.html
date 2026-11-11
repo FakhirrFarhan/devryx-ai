@@ -780,7 +780,7 @@ body[data-theme="ocean"] #inputwrap{background:rgba(10,35,56,0.66)}
 .vid-cancel{background:none;border:1px solid var(--border2);color:var(--text2);border-radius:999px;padding:5px 16px;font-size:12px;font-family:var(--font);cursor:pointer}
 .vid-cancel:hover{border-color:var(--red);color:var(--red)}
 video.gen-vid{width:100%;max-width:430px;border-radius:12px;display:block;background:#000}
-/* ═══════════ MUSE-LIKE: follow-ups, voice chat, memory ═══════════ */
+/* ═══════════ Follow-ups, voice chat, memory ═══════════ */
 .followups{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .fu-chip{background:var(--s3);border:1px solid var(--border2);color:var(--text1);border-radius:999px;padding:6px 12px;font-size:12px;font-family:var(--font);cursor:pointer;transition:all .15s}
 .fu-chip:hover{border-color:var(--red);color:var(--red)}
@@ -1622,7 +1622,7 @@ async function regenerate(wrap){
   }
 }
 
-/* ── MUSE-LIKE: memory, follow-up suggestions, voice conversation ── */
+/* ── Memory, follow-up suggestions, voice conversation ── */
 let userMemory = {name:''};
 try{ userMemory = Object.assign({name:''}, JSON.parse(localStorage.getItem('devryx_memory')||'{}')); }catch(e){}
 function saveMemory(){ try{ localStorage.setItem('devryx_memory', JSON.stringify(userMemory)); }catch(e){} }

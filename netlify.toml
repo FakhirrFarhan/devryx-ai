@@ -10,3 +10,21 @@
 
 [functions.chat]
   timeout = 26
+
+[functions.video]
+  timeout = 26
+
+# Security headers on every response (added 2026-11-11).
+# CSP notes: 'unsafe-inline' is required because the app is a single-file
+# build with inline scripts/handlers and dynamically generated styles.
+# External services the app legitimately uses: Leaflet (unpkg), OpenStreetMap
+# tiles, Pollinations images, Hugging Face Spaces (video), Google AdSense.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(self), geolocation=(self), payment=(), usb=(), interest-cohort=()"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net https://pagead2.googlesyndication.com https://*.googlesyndication.com https://googleads.g.doubleclick.net https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; img-src 'self' data: blob: https:; media-src 'self' blob: https:; connect-src 'self' https://image.pollinations.ai https://*.hf.space https://nominatim.openstreetmap.org https://*.googlesyndication.com https://googleads.g.doubleclick.net https://www.google.com; font-src 'self' data: https://fonts.gstatic.com; frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://www.google.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'"

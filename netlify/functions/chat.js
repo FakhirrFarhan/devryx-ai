@@ -118,6 +118,11 @@ exports.handler = async (event) => {
   if (event.httpMethod !== "POST")
     return json(405, { error: "Method Not Allowed" });
 
+  // Abuse guards: vision requests carry base64 images, so the body cap is
+  // generous (12 MB) but finite; history length is capped as well.
+  if (event.body && event.body.length > 12000000)
+    return json(200, { error: "Request too large." });
+
   let messages, memory;
   try {
     const body = JSON.parse(event.body || "{}");
@@ -128,6 +133,7 @@ exports.handler = async (event) => {
   }
   if (!Array.isArray(messages) || messages.length === 0)
     return json(200, { error: "No messages provided." });
+  if (messages.length > 60) messages = messages.slice(-60);
 
   let systemPrompt = BASE_PROMPT;
   const userName =
